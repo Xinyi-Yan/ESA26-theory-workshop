@@ -114,28 +114,36 @@ textarea{
 
 }
 
-.submitButton{
+.actionButton{
 
     display:block;
 
     width:100%;
 
-    background:#28a745;
+    box-sizing:border-box;
 
-    color:white;
+    text-align:center;
 
     text-decoration:none;
 
-    text-align:center;
+    background:#0066cc;
+
+    color:white;
 
     padding:18px;
 
     border-radius:12px;
 
-    margin-top:30px;
+    margin-top:20px;
 
     font-size:22px;
 
     font-weight:bold;
+
+}
+
+.actionButton:hover{
+
+    background:#0055aa;
 
 }
