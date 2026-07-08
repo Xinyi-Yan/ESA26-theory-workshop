@@ -20,6 +20,54 @@ body{
 
 }
 
+/* ---------- Footer ---------- */
+
+.footer{
+
+    margin-top:60px;
+
+    padding-top:25px;
+
+    border-top:1px solid #cccccc;
+
+}
+
+.footerTitle{
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    margin-bottom:15px;
+
+}
+
+.footerLink{
+
+    display:block;
+
+    text-decoration:none;
+
+    color:#0066cc;
+
+    margin-top:12px;
+
+}
+
+.footerChild{
+
+    margin-left:28px;
+
+}
+
+.currentPage{
+
+    font-weight:bold;
+
+    color:#004B87;
+
+}
+
 h1{
 
     text-align:center;
