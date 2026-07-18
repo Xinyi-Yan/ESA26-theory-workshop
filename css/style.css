@@ -269,3 +269,17 @@ li {
     margin:0;
 
 }
+
+a{
+
+    color:#0066cc;
+
+}
+
+a:hover{
+
+    color:#0066cc;
+
+    text-decoration:underline;
+
+}
