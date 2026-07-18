@@ -251,3 +251,21 @@ li {
     margin-bottom: 6px;
 
 }
+
+.buttonRow{
+
+    display:flex;
+
+    gap:12px;
+
+    margin-top:14px;
+
+}
+
+.buttonRow .menuButton{
+
+    flex:1;
+
+    margin:0;
+
+}
