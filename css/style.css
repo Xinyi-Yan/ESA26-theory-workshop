@@ -237,3 +237,17 @@ h1 a.titleLink:active {
     text-decoration: none;
 
 }
+
+ul {
+
+    margin-top: 8px;
+
+    margin-bottom: 16px;
+
+}
+
+li {
+
+    margin-bottom: 6px;
+
+}
