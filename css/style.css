@@ -270,15 +270,23 @@ li {
 
 }
 
-a{
+.organizers{
 
-    color:#0066cc;
+    margin-top:50px;
+
+    margin-bottom:15px;
 
 }
 
-a:hover{
+.sectionLink{
 
-    color:#0066cc;
+    color:#004B87;
+
+    text-decoration:none;
+
+}
+
+.sectionLink:hover{
 
     text-decoration:underline;
 
