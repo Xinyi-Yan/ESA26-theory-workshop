@@ -278,7 +278,7 @@ li {
 
 }
 
-.sectionLink{
+.textLink{
 
     color:#004B87;
 
@@ -286,8 +286,16 @@ li {
 
 }
 
-.sectionLink:hover{
+.textLink:hover{
+
+    color:#004B87;
 
     text-decoration:underline;
+
+}
+
+.textLink:visited{
+
+    color:#004B87;
 
 }
