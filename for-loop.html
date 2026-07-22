@@ -100,52 +100,44 @@ For-Loop Exercise
 
 <p>
 
-The discrete logistic growth model is
+Complete the missing pieces of the code below using the following description of a discrete logistic model. You can run the simulation and check your answers.
+
+The discrete logistic growth model is:
 
 <b>N<sub>t+1</sub> = N<sub>t</sub> + rN<sub>t</sub>(1 − N<sub>t</sub>/K)</b>.
 
 At each time step, the population changes according to a density-dependent
 per-capita growth rate. Here,
 
-<b>r</b> is the intrinsic growth rate for exponential growth, while
+<b>r</b> is the intrinsic growth rate for the continuous exponential growth (i.e. r + 1 = &lambda in the discrete exponential growth model), while
 <b>(1 − N/K)</b> reduces that growth rate as the population approaches the
 carrying capacity <b>K</b>.
-
-Complete the missing pieces of the code below. After your answers are
-correct, you can run the simulation and visualize the resulting population
-trajectory.
 
 </p>
 
 <h2>Simulation Parameters</h2>
 
-<table class="parameterTable">
+<p>
 
-<tr>
-<td>N<sub>0</sub></td>
-<td><input id="N0" value="10"></td>
-</tr>
+Initialize the parameters below for running the simulation. The simulation uses your values, even though the example code below displays default values for demonstration.
 
-<tr>
-<td>r</td>
-<td><input id="r" value="0.2"></td>
-</tr>
+</p>
 
-<tr>
-<td>K</td>
-<td><input id="K" value="100"></td>
-</tr>
+<ul>
 
-<tr>
-<td>end_time</td>
-<td><input id="endtime" value="100"></td>
-</tr>
+<li><strong>N<sub>0</sub></strong> – Initial population size.</li>
 
-</table>
+<li><strong>r</strong> – Intrinsic growth rate under exponential growth.</li>
+
+<li><strong>K</strong> – Carrying capacity.</li>
+
+<li><strong>end_time</strong> – Number of time steps to simulate.</li>
+
+</ul>
 
 <div class="codeBlock">
 
-# Step 1. Initialize the model parameters.
+# Step 1. Initialize the model parameters outside the for-loop.
 
 N0 <- 10
 r <- 0.2
@@ -161,7 +153,7 @@ pop_vec[1] <- N0
 
 for (t in seq(1, end_time, by = time_step)) {
 
-# Step 3. Extract the current population size.
+# Step 3. Extract the current population size to prepare for Step 4.
 
 N_t <- <input class="blank" id="a1">
 
@@ -173,27 +165,24 @@ N_tplus1 <- <input class="blank" id="a2">
 
 pop_vec[t + 1] <- <input class="blank" id="a3">
 
+# Step 6. Interate to the next time step through the for-loop.
 }
 
 </div>
 
 <br>
 
-<button class="bigButton smallButton" onclick="checkAnswers()">
+<button class="bigButton smallButton"
+        onclick="runSimulation()">
 
-Check Answers
+Check Answers &amp; Run Simulation
 
 </button>
 
-<button class="bigButton smallButton" onclick="showAnswers()">
+<button class="bigButton smallButton"
+        onclick="showAnswers()">
 
 Show Suggested Answers
-
-</button>
-
-<button class="bigButton smallButton" onclick="runSimulation()">
-
-Run Simulation
 
 </button>
 
@@ -204,6 +193,24 @@ Run Simulation
 <canvas id="plot"></canvas>
 
 </div>
+
+<p>
+
+<strong>Tis:</strong>
+
+</p>
+
+<ul>
+
+<li>
+Experiment with different values of <strong>r</strong> and observe how the population dynamics change.
+</li>
+
+<li>
+There are more than one valid ways to implement this simulation using a <code>for</code> loop. The code shown here is just one example.
+</li>
+
+</ul>
 
 <hr>
 
