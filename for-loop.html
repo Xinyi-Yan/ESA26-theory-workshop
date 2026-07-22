@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>For-Loop Exercise</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+
+/* only styles unique to this page */
+
+.codeBlock{
+
+    background:#f6f6f6;
+
+    padding:18px;
+
+    border-radius:8px;
+
+    font-family:Consolas, monospace;
+
+    white-space:pre-wrap;
+
+    line-height:1.6;
+
+}
+
+.blank{
+
+    width:250px;
+
+    font-family:Consolas, monospace;
+
+    font-size:16px;
+
+}
+
+.correct{
+
+    background:#dff5df;
+
+}
+
+.incorrect{
+
+    background:#ffdede;
+
+}
+
+.parameterTable{
+
+    margin:20px 0;
+
+}
+
+.parameterTable td{
+
+    padding:6px 10px;
+
+}
+
+.smallButton{
+
+    margin-top:12px;
+
+    margin-right:10px;
+
+}
+
+#plotContainer{
+
+    margin-top:35px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>
+<a class="titleLink" href="index.html">
+ESA 2026 Theory Workshop
+</a>
+</h1>
+
+<p class="subtitle">
+For-Loop Exercise
+</p>
+
+<p>
+
+The discrete logistic growth model is
+
+<b>N<sub>t+1</sub> = N<sub>t</sub> + rN<sub>t</sub>(1 − N<sub>t</sub>/K)</b>.
+
+At each time step, the population changes according to a density-dependent
+per-capita growth rate. Here,
+
+<b>r</b> is the intrinsic growth rate for exponential growth, while
+<b>(1 − N/K)</b> reduces that growth rate as the population approaches the
+carrying capacity <b>K</b>.
+
+Complete the missing pieces of the code below. After your answers are
+correct, you can run the simulation and visualize the resulting population
+trajectory.
+
+</p>
+
+<h2>Simulation Parameters</h2>
+
+<table class="parameterTable">
+
+<tr>
+<td>N<sub>0</sub></td>
+<td><input id="N0" value="10"></td>
+</tr>
+
+<tr>
+<td>r</td>
+<td><input id="r" value="0.2"></td>
+</tr>
+
+<tr>
+<td>K</td>
+<td><input id="K" value="100"></td>
+</tr>
+
+<tr>
+<td>end_time</td>
+<td><input id="endtime" value="100"></td>
+</tr>
+
+</table>
+
+<div class="codeBlock">
+
+# Step 1. Initialize the model parameters.
+
+N0 <- 10
+r <- 0.2
+K <- 100
+end_time <- 100
+time_step <- 1
+
+# Step 2. Initialize the vector that stores the population through time.
+
+pop_vec <- numeric(end_time + 1)
+
+pop_vec[1] <- N0
+
+for (t in seq(1, end_time, by = time_step)) {
+
+# Step 3. Extract the current population size.
+
+N_t <- <input class="blank" id="a1">
+
+# Step 4. Apply the biological model to calculate the next population size.
+
+N_tplus1 <- <input class="blank" id="a2">
+
+# Step 5. Store the updated population size.
+
+pop_vec[t + 1] <- <input class="blank" id="a3">
+
+}
+
+</div>
+
+<br>
+
+<button class="bigButton smallButton" onclick="checkAnswers()">
+
+Check Answers
+
+</button>
+
+<button class="bigButton smallButton" onclick="showAnswers()">
+
+Show Suggested Answers
+
+</button>
+
+<button class="bigButton smallButton" onclick="runSimulation()">
+
+Run Simulation
+
+</button>
+
+<p id="message"></p>
+
+<div id="plotContainer">
+
+<canvas id="plot"></canvas>
+
+</div>
+
+<hr>
+
+<div class="footer">
+
+<a class="footerLink" href="index.html">
+Theory Workshop Home
+</a>
+
+<a class="footerLink footerChild" href="workshop-slides.html">
+Workshop Slides
+</a>
+
+<a class="footerLink footerChild" href="reading-theory.html">
+Reading Theory Exercise
+</a>
+
+<a class="footerLink footerChild currentPage" href="for-loop.html">
+For-Loop Exercise
+</a>
+
+<a class="footerLink footerChild" href="resources.html">
+Other Resources
+</a>
+
+</div>
+
+</div>
+
+<script>
+
+const answers = {
+
+a1:"pop_vec[t]",
+
+a2:"N_t + r*N_t*(1 - N_t/K)",
+
+a3:"N_tplus1"
+
+};
+
+function normalize(x){
+
+return x.replace(/\s+/g,"");
+
+}
+
+function checkAnswers(){
+
+let correct=true;
+
+for(let id in answers){
+
+let box=document.getElementById(id);
+
+if(normalize(box.value)==normalize(answers[id])){
+
+box.className="blank correct";
+
+}else{
+
+box.className="blank incorrect";
+
+correct=false;
+
+}
+
+}
+
+document.getElementById("message").innerHTML=
+correct ?
+"✓ Great! Your code is complete. You can now run the simulation." :
+"Some answers are not quite correct yet.";
+
+return correct;
+
+}
+
+function showAnswers(){
+
+for(let id in answers){
+
+document.getElementById(id).value=answers[id];
+
+}
+
+checkAnswers();
+
+}
+
+let chart=null;
+
+function runSimulation(){
+
+if(!checkAnswers()) return;
+
+let N0=parseFloat(document.getElementById("N0").value);
+
+let r=parseFloat(document.getElementById("r").value);
+
+let K=parseFloat(document.getElementById("K").value);
+
+let end=parseInt(document.getElementById("endtime").value);
+
+let pop=[N0];
+
+for(let t=0;t<end;t++){
+
+let Nt=pop[t];
+
+let Nt1=Nt+r*Nt*(1-Nt/K);
+
+pop.push(Nt1);
+
+}
+
+if(chart){
+
+chart.destroy();
+
+}
+
+chart=new Chart(document.getElementById("plot"),{
+
+type:"line",
+
+data:{
+
+labels:[...Array(end+1).keys()],
+
+datasets:[{
+
+label:"Population",
+
+data:pop,
+
+borderWidth:2,
+
+fill:false
+
+}]
+
+},
+
+options:{
+
+responsive:true,
+
+plugins:{
+
+legend:{display:false}
+
+},
+
+scales:{
+
+x:{title:{display:true,text:"Time"}},
+
+y:{title:{display:true,text:"Population Size"}}
+
+}
+
+}
+
+});
+
+}
+
+</script>
+
+</body>
+
+</html>
