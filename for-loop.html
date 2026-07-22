@@ -115,6 +115,7 @@ carrying capacity <b>K</b>.
 
 </p>
 
+
 <h2>Simulation Parameters</h2>
 
 <p>
@@ -123,17 +124,30 @@ Initialize the parameters below for running the simulation. The simulation uses 
 
 </p>
 
-<ul>
 
-<li><strong>N<sub>0</sub></strong> – Initial population size.</li>
+<table class="parameterTable">
 
-<li><strong>r</strong> – Intrinsic growth rate under exponential growth.</li>
+<tr>
+<td>N<sub>0</sub></td>
+<td><input id="N0" value="10"></td>
+</tr>
 
-<li><strong>K</strong> – Carrying capacity.</li>
+<tr>
+<td>r</td>
+<td><input id="r" value="0.2"></td>
+</tr>
 
-<li><strong>end_time</strong> – Number of time steps to simulate.</li>
+<tr>
+<td>K</td>
+<td><input id="K" value="100"></td>
+</tr>
 
-</ul>
+<tr>
+<td>end_time</td>
+<td><input id="endtime" value="100"></td>
+</tr>
+
+</table>
 
 <div class="codeBlock">
 
@@ -172,17 +186,15 @@ pop_vec[t + 1] <- <input class="blank" id="a3">
 
 <br>
 
-<button class="bigButton smallButton"
-        onclick="runSimulation()">
+<button class="bigButton smallButton" onclick="showAnswers()">
 
-Check Answers &amp; Run Simulation
+Show Suggested Answers
 
 </button>
 
-<button class="bigButton smallButton"
-        onclick="showAnswers()">
+<button class="bigButton smallButton" onclick="runSimulation()">
 
-Show Suggested Answers
+Check Your Answers &amp; Run Simulation
 
 </button>
 
@@ -191,6 +203,7 @@ Show Suggested Answers
 <div id="plotContainer">
 
 <canvas id="plot"></canvas>
+
 
 </div>
 
